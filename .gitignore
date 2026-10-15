@@ -53,3 +53,6 @@ target/
 # ---- 其他 ----
 tmp/
 temp/
+
+# ---- 本地模拟/练习用的克隆副本 ----
+training-repo/
