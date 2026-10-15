@@ -1,0 +1,25 @@
+团队协作流程测试文件
+====================
+
+用途：验证「团队成员从克隆到合并 PR」的完整流程。
+作者：Team Member (simulation)
+日期：2026-10-15
+
+流程回顾
+--------
+1. git clone
+2. git switch main && git pull --rebase
+3. git switch -c docs/team-workflow-test
+4. 新建本文件
+5. git add + git commit
+6. git push -u origin docs/team-workflow-test
+7. 在网页上开 Pull Request（模板会自动填充）
+8. 等 ci 检查通过
+9. Squash and merge
+10. 回到 main 同步，删除本地分支
+
+注意事项
+--------
+- main 有分支保护，直推会被拒绝
+- PR 标题和提交信息用 Conventional Commits 前缀
+- 合并方式统一 Squash and merge
