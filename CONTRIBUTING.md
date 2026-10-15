@@ -3,6 +3,9 @@
 > 适用对象：**从没接触过 Git 和 GitHub 的团队成员**
 > 本仓库：https://github.com/K934/gitcode
 > 负责人：K934
+>
+> 📄 **需要打印或离线阅读？** 仓库里提供了 Word 版本：[`GIT-协作手册.docx`](./GIT-协作手册.docx)（可直接下载/打印）。
+> 该 Word 文档由本手册自动生成，**请勿直接编辑它**——要改内容请改 Markdown 后重新生成，方法见文末附录。
 
 ---
 
@@ -430,10 +433,10 @@ git branch -D feat/add-hello
 git diff
 
 # 放弃某个文件的所有改动，恢复原样
-git checkout -- 文件名
+git restore 文件名
 
 # 放弃所有未提交的改动（谨慎！不可恢复）
-git checkout -- .
+git restore .
 ```
 
 ### 场景 2：提交信息写错了（还没推送）
@@ -542,7 +545,7 @@ git branch -D feat/我的任务
 git status                    # 迷茫时先看这个
 git diff                      # 看改了什么
 git log --oneline -10         # 看历史
-git checkout -- 文件名         # 放弃单个文件的改动
+git restore 文件名              # 放弃单个文件的改动
 git rebase --abort            # 放弃出错的 rebase
 ```
 
@@ -578,6 +581,28 @@ gh api -X PATCH repos/K934/gitcode/branches/main/protection/required_pull_reques
 2. **再用 `git status` 看当前状态**，把输出发给负责人
 3. **报错信息请完整复制**，不要只描述「报错了」
 4. 实在搞不定，**不要乱试 `--hard` 类命令**，直接求助
+
+---
+
+## 附录：Word 版本是怎么生成的
+
+仓库里的 `GIT-协作手册.docx` **不是手工维护的**，它由本 Markdown 文件自动转换而来。转换脚本是 `tools/md2docx.ps1`，**不依赖 pandoc、Python 或 Microsoft Word**，只用 Windows 自带的 .NET 组件构造 OOXML 包。
+
+**修改文档内容的正确姿势：**
+
+```powershell
+# 1. 改 Markdown（这是唯一的内容来源）
+# 2. 重新生成 Word
+& .\tools\md2docx.ps1 -InputPath .\CONTRIBUTING.md -OutputPath '.\GIT-协作手册.docx' -Title '团队 Git / GitHub 协作操作手册' -Author 'K934'
+
+# 3. 两个文件一起提交
+git add CONTRIBUTING.md 'GIT-协作手册.docx'
+git commit -m "docs: update collaboration manual"
+```
+
+> ⚠️ **不要直接编辑 .docx 文件。** 它是生成物，下次重新生成时你的手改会被覆盖。
+>
+> ⚠️ 脚本参数名是 `-InputPath` / `-OutputPath`，**不是** `-Input` / `-Output`——因为 `$Input` 是 PowerShell 的保留自动变量，会与参数冲突导致绑定失败。
 
 ---
 
