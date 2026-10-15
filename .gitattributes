@@ -1,0 +1,39 @@
+# 统一换行符：仓库内存 LF，Windows 检出为 CRLF
+# 避免团队成员之间因 CRLF/LF 差异产生无意义的 diff
+
+* text=auto
+
+# 文本文件强制 LF（仓库内）
+*.md    text eol=lf
+*.txt   text eol=lf
+*.yml   text eol=lf
+*.yaml  text eol=lf
+*.json  text eol=lf
+*.js    text eol=lf
+*.ts    text eol=lf
+*.html  text eol=lf
+*.css   text eol=lf
+*.py    text eol=lf
+*.sh    text eol=lf
+*.go    text eol=lf
+*.rs    text eol=lf
+*.java  text eol=lf
+
+# Windows 批处理必须是 CRLF
+*.bat   text eol=crlf
+*.cmd   text eol=crlf
+*.ps1   text eol=crlf
+
+# 二进制文件不做任何转换
+*.png   binary
+*.jpg   binary
+*.jpeg  binary
+*.gif   binary
+*.ico   binary
+*.pdf   binary
+*.zip   binary
+*.gz    binary
+*.exe   binary
+*.dll   binary
+*.woff  binary
+*.woff2 binary
