@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  ci:
+    name: ci
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Repository structure check
+        run: |
+          test -f README.md || { echo "missing README.md"; exit 1; }
+          test -f .gitignore || { echo "missing .gitignore"; exit 1; }
+          echo "structure check passed"
+
+      # When the tech stack is decided, wire in the real pipeline here, e.g.:
+      # - name: Install dependencies
+      #   run: npm ci
+      # - name: Run tests
+      #   run: npm test
+      # - name: Lint
+      #   run: npm run lint
