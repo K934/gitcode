@@ -1,0 +1,55 @@
+# ---- 操作系统 ----
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- 编辑器 / IDE ----
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+
+# ---- 环境变量与密钥（切勿提交）----
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.p12
+
+# ---- Node.js ----
+node_modules/
+dist/
+build/
+coverage/
+*.log
+npm-debug.log*
+yarn-error.log*
+.pnpm-store/
+
+# ---- Python ----
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+*.egg-info/
+
+# ---- Java / Kotlin ----
+target/
+*.class
+.gradle/
+
+# ---- Go / Rust ----
+*.exe
+*.test
+*.out
+/target/
+
+# ---- 其他 ----
+tmp/
+temp/
